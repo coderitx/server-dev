@@ -1,0 +1,30 @@
+{
+  "web": {
+    "port": 8080
+  },
+  "log": {
+    "level": "info",
+    "format": "json",
+    "path": "./logs",
+    "filename": "online_chat.log",
+    "file_maxsize": 200,
+    "file_max_backups": 3,
+    "max_age": 3,
+    "compress": true,
+    "stdout": true
+  },
+  "db": {
+    "addr": "8.141.175.100",
+    "port": 3306,
+    "username": "root",
+    "password": "root",
+    "database": "online_chat",
+    "max_connect": 10,
+    "open_connect": 10
+  },
+  "redis": {
+    "addr": "127.0.0.1:6379",
+    "password": "",
+    "max_conn_age": 100
+  }
+}

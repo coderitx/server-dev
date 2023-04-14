@@ -1,4 +1,4 @@
-package models
+package request
 
 import (
 	"github.com/jinzhu/gorm"
@@ -15,7 +15,7 @@ type UserBasic struct {
 	ClientPort    string
 	LoginTime     uint64
 	HeartbeatTime uint64
-	LogoutTime    uint64
+	LoginOutTime  uint64
 	IsLogout      bool
 	DeviceInfo    string
 }

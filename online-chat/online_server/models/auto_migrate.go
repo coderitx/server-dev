@@ -1,11 +1,11 @@
 package models
 
 import (
-	"online-chat/config"
+	"online-chat/global"
+	"online-chat/online_server/models/request"
 )
 
 // AutoMigrateModels 迁移模型至数据库
 func AutoMigrateModels() {
-	gormDB := config.InitDB()
-	gormDB.AutoMigrate(&UserBasic{})
+	global.DB.AutoMigrate(&request.UserBasic{})
 }
