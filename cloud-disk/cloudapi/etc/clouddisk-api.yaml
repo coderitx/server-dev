@@ -1,0 +1,16 @@
+Name: cloudapi-api
+Host: 0.0.0.0
+Port: 8888
+Database:
+  Source: root:xxxx@tcp(127.0.0.1:3306)/cloud_disk?charset=utf8mb4&parseTime=True&loc=Local
+CloudRpcConfig:
+  Endpoints:
+    - 127.0.0.1:8080
+RedisConfig:
+  Addr: 127.0.0.1:6379
+  Password: ""
+  DB: 0
+
+Log:
+  Level: debug
+

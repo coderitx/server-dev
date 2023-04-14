@@ -1,0 +1,53 @@
+type LoginRequest {
+    Name string `json:"name"`
+    Password string `json:"password"`
+}
+
+type LoginReply {
+    Token string `json:"token"`
+}
+
+type UserDetailsRequest {
+    Identity string `json:"identity"`
+}
+
+type UserDetailsReply {
+    Name string `json:"name"`
+    Email string `json:"email"`
+}
+
+type EmailCodeSendRequest {
+    Email string `json:"email"`
+}
+type EmailCodeSendResply {
+    Code string `json:"code"`
+}
+
+type UserRegisterRequest {
+    Name string `json:"name"`
+    Password string `json:"password"`
+    Email string `json:"email"`
+    Code string `json:"code"`
+}
+
+type UserRegisterReply {
+    Code string `json:"code"`
+}
+
+@server(
+    group: user
+)
+
+service clouddisk-api {
+    @handler UserLogin
+    post /user/login (LoginRequest) returns (LoginReply)
+
+    @handler UserDetails
+    post /user/details (UserDetailsRequest) returns (UserDetailsReply)
+
+    @handler EmailCodeSendRegister
+    post /mail/code/send/register (EmailCodeSendRequest) returns (EmailCodeSendResply)
+
+    @handler UserRegister
+    post /user/register (UserRegisterRequest) returns (UserRegisterReply)
+}
