@@ -14,10 +14,10 @@
     "stdout": true
   },
   "db": {
-    "addr": "8.141.175.100",
+    "addr": "127.0.0.1",
     "port": 3306,
     "username": "root",
-    "password": "root",
+    "password": "xxxx",
     "database": "online_chat",
     "max_connect": 10,
     "open_connect": 10
