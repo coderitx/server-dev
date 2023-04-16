@@ -17,7 +17,7 @@
     "addr": "127.0.0.1",
     "port": 3306,
     "username": "root",
-    "password": "xxxx",
+    "password": "root",
     "database": "online_chat",
     "max_connect": 10,
     "open_connect": 10

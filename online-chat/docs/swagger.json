@@ -1,0 +1,25 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/index": {
+            "get": {
+                "responses": {}
+            }
+        },
+        "/user/get_user_list": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
