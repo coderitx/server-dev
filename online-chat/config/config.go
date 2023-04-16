@@ -20,9 +20,14 @@ type LogConfig struct {
 }
 
 type RedisConfig struct {
-	Addr       string `yaml:"addr" json:"addr"`
-	Password   string `yaml:"password" json:"password"`
-	MaxConnAge int    `yaml:"max_conn_age" json:"max_conn_age"`
+	Addr        string `yaml:"addr" json:"addr"`
+	Password    string `yaml:"password" json:"password"`
+	DB          int    `yaml:"db" json:"db"`
+	ReadTimeout int    `yaml:"read_timeout" json:"read_timeout"`
+	DialTimeout int    `yaml:"dial_timeout" json:"dial_timeout"`
+	PoolSize    int    `yaml:"pool_size" json:"pool_size"`
+	PoolTimeout int    `yaml:"pool_timeout" json:"pool_timeout"`
+	MaxConnAge  int    `yaml:"max_conn_age" json:"max_conn_age"`
 }
 
 type DBConfig struct {

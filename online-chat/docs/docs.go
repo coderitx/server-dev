@@ -21,7 +21,41 @@ const docTemplate = `{
                 "responses": {}
             }
         },
-        "/user/get_user_list": {
+        "/user/createUser": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/deleteUser": {
+            "put": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUser.email": {
             "get": {
                 "responses": {
                     "200": {
@@ -31,6 +65,71 @@ const docTemplate = `{
                         }
                     }
                 }
+            }
+        },
+        "/user/getUser.id": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUser.name": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUser.phone": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/getUserList": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/login": {
+            "post": {
+                "responses": {
+                    "200": {
+                        "description": "code\",\"message\",\"data\"}",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/ws/sendMsg": {
+            "get": {
+                "responses": {}
             }
         }
     }

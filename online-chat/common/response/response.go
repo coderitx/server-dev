@@ -14,8 +14,8 @@ type Response struct {
 	Data    interface{} `json:"data"`
 }
 
-// SendSuccess 成功响应
-func SendSuccess(c *gin.Context, code int, msg string, data interface{}) {
+// Success 成功响应
+func Success(c *gin.Context, code int, msg string, data interface{}) {
 	c.JSON(http.StatusOK, Response{
 		Code:    code,
 		Message: msg,
@@ -24,8 +24,8 @@ func SendSuccess(c *gin.Context, code int, msg string, data interface{}) {
 	return
 }
 
-// SendError 失败响应
-func SendError(c *gin.Context, httpCode int, code int, msg string, data interface{}) {
+// Failed 失败响应
+func Failed(c *gin.Context, httpCode int, code int, msg string, data interface{}) {
 	c.JSON(httpCode, Response{
 		Code:    code,
 		Message: msg,
@@ -42,7 +42,7 @@ func ReturnJsonFromString(c *gin.Context, httpCode int, jsonStr string) {
 
 // SendFail 失败的业务逻辑
 func SendFail(c *gin.Context, dataCode int, msg string, data interface{}) {
-	SendError(c, http.StatusBadRequest, dataCode, msg, data)
+	Failed(c, http.StatusBadRequest, dataCode, msg, data)
 	c.Abort()
 }
 
@@ -78,9 +78,9 @@ func ParseForm(c *gin.Context, obj interface{}) error {
 }
 
 func FailWithMessage(message string, c *gin.Context) {
-	SendError(c, 500, 999, message, map[string]interface{}{})
+	Failed(c, 500, 999, message, map[string]interface{}{})
 }
 
 func FailWithDetailed(data interface{}, message string, c *gin.Context) {
-	SendError(c, 500, 999, message, data)
+	Failed(c, 500, 999, message, data)
 }
