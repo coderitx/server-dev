@@ -13,6 +13,7 @@ import (
 
 func InitApiRouter() {
 	r := gin.Default()
+
 	ApiRouter(r)
 	runServer(r)
 }

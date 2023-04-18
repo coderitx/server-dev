@@ -24,3 +24,11 @@ func SendMsgByWebSocket(ctx *gin.Context) {
 	response.Failed(ctx, http.StatusBadRequest, code, errorx.ErrMsg(code), nil)
 	return
 }
+
+// UserChat 通过websocket发送消息
+// @Router /ws/chat [get]
+func UserChat(ctx *gin.Context) {
+	w := wsx.WSMessage{}
+	ctx.ShouldBindJSON(&w)
+	w.Chat(ctx.Writer, ctx.Request)
+}

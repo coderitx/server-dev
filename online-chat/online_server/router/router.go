@@ -4,6 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
+	"net/http"
 	_ "online-chat/docs"
 	"online-chat/middleware"
 	"online-chat/online_server/service"
@@ -19,7 +20,15 @@ func ApiRouter(router *gin.Engine) {
 
 func userApi(r *gin.Engine) {
 	user := r.Group("user")
+	//r.LoadHTMLFiles("./static")
+	r.LoadHTMLGlob("static/*")
+	//user.Static("", "./static")
 	user.POST("createUser", service.CreateUser)
+	user.GET("login", func(ctx *gin.Context) {
+		ctx.HTML(http.StatusOK, "login.html", gin.H{
+			"msg": "login",
+		})
+	})
 	user.POST("login", service.Login)
 
 	user.Use(middleware.AuthMiddleware())
@@ -35,4 +44,5 @@ func userApi(r *gin.Engine) {
 func wsApi(r *gin.Engine) {
 	w := r.Group("ws")
 	w.GET("sendMsg", service.SendMsgByWebSocket)
+	w.GET("chat", service.UserChat)
 }
