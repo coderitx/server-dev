@@ -1,0 +1,29 @@
+mysql:
+  host: 127.0.0.1
+  port: 3306
+  user: root
+  password: root
+  db: "blog"
+  log_level: release
+log:
+  level: "info"
+  format: "json"
+  path: "./logs"
+  filename: "online_chat.log"
+  file_maxsize: 200
+  file_max_backups: 3
+  max_age: 3
+  compress: true
+  stdout: true
+redis:
+  host: 127.0.0.1
+  password: root
+  read_timeout: 100
+  dial_timeout: 100
+  pool_size: 50
+  pool_timeout: 100
+  max_conn_age: 100
+system:
+  env: dev
+  host: "0.0.0.0"
+  port: 8080
