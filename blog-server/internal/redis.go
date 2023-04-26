@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"blog-server/config"
+	"blog-server/config/internal_config"
 	"blog-server/global"
 	"context"
 	"fmt"
@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-func InitRedis(c config.RedisConfig) {
+func InitRedis(c internal_config.RedisConfig) {
 	rdb := redis.NewClient(&redis.Options{
 		Addr:        c.Host,
 		Password:    c.Password,

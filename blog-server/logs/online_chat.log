@@ -1,6 +1,0 @@
-{"level":"INFO","ts":"2023-04-25 23:07:07.949","caller":"blog-server/main.go:24","msg":"--------所有配置初始化完成---------"}
-{"level":"INFO","ts":"2023-04-25 23:28:06.625","caller":"routers/gin_server.go:52","msg":"Listener Server ..."}
-{"level":"INFO","ts":"2023-04-25 23:28:06.626","caller":"routers/gin_server.go:59","msg":"Server exiting"}
-{"level":"INFO","ts":"2023-04-25 23:28:09.701","caller":"blog-server/main.go:24","msg":"--------所有配置初始化完成---------"}
-{"level":"INFO","ts":"2023-04-25 23:31:27.951","caller":"routers/init_router.go:53","msg":"Listener Server ..."}
-{"level":"INFO","ts":"2023-04-25 23:31:27.953","caller":"routers/init_router.go:60","msg":"Server exiting"}

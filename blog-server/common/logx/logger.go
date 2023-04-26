@@ -1,7 +1,7 @@
 package logx
 
 import (
-	"blog-server/config"
+	"blog-server/config/internal_config"
 	"fmt"
 	"os"
 	"path/filepath"
@@ -16,7 +16,7 @@ const DefaultLogPath = "/var/agent/" // 默认输出日志文件路径
 const DefaultLogName = "default.log"
 
 // InitLogger 初始化 log
-func InitLogger(conf config.LogConfig) error {
+func InitLogger(conf internal_config.LogConfig) error {
 	logLevel := map[string]zapcore.Level{
 		"debug": zapcore.DebugLevel,
 		"info":  zapcore.InfoLevel,
@@ -48,7 +48,7 @@ func InitLogger(conf config.LogConfig) error {
 }
 
 // getEncoder 编码器(如何写入日志)
-func getEncoder(conf config.LogConfig) zapcore.Encoder {
+func getEncoder(conf internal_config.LogConfig) zapcore.Encoder {
 
 	encoderConfig := zap.NewProductionEncoderConfig()
 
@@ -66,7 +66,7 @@ func getEncoder(conf config.LogConfig) zapcore.Encoder {
 }
 
 // getLogWriter 获取日志输出方式  日志文件 控制台
-func getLogWriter(conf config.LogConfig) (zapcore.WriteSyncer, error) {
+func getLogWriter(conf internal_config.LogConfig) (zapcore.WriteSyncer, error) {
 
 	// 判断日志路径是否存在，如果不存在就创建
 	if exist := IsExist(conf.LogPath); !exist {

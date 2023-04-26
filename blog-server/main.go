@@ -7,13 +7,12 @@ import (
 	"blog-server/global"
 	"blog-server/internal"
 	"blog-server/routers"
-	"flag"
 	"go.uber.org/zap"
 )
 
 func init() {
-	fp := flag.String("f", "./config/config.yaml", "config file path")
-	c, err := config.LoadConfig(*fp)
+	//fp := flag.String("f", "./config/config.yaml", "config file path")
+	c, err := config.LoadConfig(global.ConfigPath)
 	if err != nil {
 		panic(err)
 	}

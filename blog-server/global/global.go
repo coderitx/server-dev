@@ -7,7 +7,8 @@ import (
 )
 
 var (
-	GlobalC *config.Config
-	DB      *gorm.DB
-	RDB     *redis.Client
+	ConfigPath = "./config/config.yaml"
+	GlobalC    *config.Config
+	DB         *gorm.DB
+	RDB        *redis.Client
 )

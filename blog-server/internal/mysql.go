@@ -1,7 +1,7 @@
 package internal
 
 import (
-	"blog-server/config"
+	"blog-server/config/internal_config"
 	"blog-server/global"
 	"fmt"
 	"go.uber.org/zap"
@@ -14,7 +14,7 @@ import (
 )
 
 // InitDB 初始化database
-func InitDB(c config.MysqlConfig) {
+func InitDB(c internal_config.MysqlConfig) {
 	var mysqlLogLeve logger.LogLevel
 	if c.LogLevel == "info" {
 		mysqlLogLeve = logger.Info
