@@ -7,7 +7,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func (s *SettingApi) SettingsApiViews(c *gin.Context) {
+// SettingsInfoViews 获取配置信息
+func (s *SettingApi) SettingsInfoViews(c *gin.Context) {
 	var su SettingUri
 	err := c.ShouldBindUri(&su)
 	if err != nil {

@@ -12,8 +12,8 @@ import (
 	"io/ioutil"
 )
 
-// SettingsApiUpdate 修改配置文件
-func (s *SettingApi) SettingsApiUpdate(c *gin.Context) {
+// SettingsInfoUpdate 修改配置文件
+func (s *SettingApi) SettingsInfoUpdate(c *gin.Context) {
 	var su SettingUri
 	err := c.ShouldBindUri(&su)
 	if err != nil {
