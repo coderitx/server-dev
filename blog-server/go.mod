@@ -6,6 +6,7 @@ require (
 	github.com/fatih/structs v1.1.0
 	github.com/gin-gonic/gin v1.9.0
 	github.com/go-redis/redis/v8 v8.11.5
+	github.com/joho/godotenv v1.5.1
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	go.uber.org/zap v1.24.0
 	gopkg.in/yaml.v2 v2.4.0

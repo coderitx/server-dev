@@ -36,6 +36,8 @@ func InitRouterGroup(router *gin.Engine) {
 	routerGroupApp := RouterGroup{apiRouterGroup}
 	// 查看系统信息
 	routerGroupApp.SettingsRouter()
+	// 上传图片相关
+	routerGroupApp.ImagesRouter()
 }
 
 func runServer(router *gin.Engine) {

@@ -7,11 +7,13 @@ import (
 	"blog-server/global"
 	"blog-server/internal"
 	"blog-server/routers"
+	"github.com/joho/godotenv"
 	"go.uber.org/zap"
 )
 
 func init() {
 	//fp := flag.String("f", "./config/config.yaml", "config file path")
+	godotenv.Load("./local.env")
 	c, err := config.LoadConfig(global.ConfigPath)
 	if err != nil {
 		panic(err)

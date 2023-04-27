@@ -3,13 +3,20 @@ mysql:
   port: 3306
   user: root
   password: root
-  db: "blog"
+  db: blog
   log_level: release
+system:
+  host: 0.0.0.0
+  port: 8080
+  env: dev
+uploads:
+  size: 5
+  path: uploads/file
 log:
-  level: "info"
-  format: "json"
-  path: "./logs"
-  filename: "online_chat.log"
+  level: info
+  format: json
+  path: ./logs
+  filename: online_chat.log
   file_maxsize: 200
   file_max_backups: 3
   max_age: 3
@@ -17,13 +24,47 @@ log:
   stdout: true
 redis:
   host: 127.0.0.1
+  port: 0
   password: root
   read_timeout: 100
   dial_timeout: 100
   pool_size: 50
   pool_timeout: 100
   max_conn_age: 100
-system:
-  env: dev
-  host: "0.0.0.0"
-  port: 8080
+site_info:
+  created_at: "2023-04-26"
+  bei_an: 自由博客
+  title: Golang个人博客
+  qq_image: ""
+  version: 2.0.0
+  email: ""
+  wechat_image: ""
+  name: Golang个人博客
+  job: 后段开发
+  addr: 北京
+  slogan: 蜡笔小新
+  slogan_en: LABIXIAOIXN
+  web: ""
+  bilibili_url: ""
+  gitee_url: ""
+  github_url: ""
+qq:
+  app_id: ""
+  key: ""
+  redirect: http://127.0.0.1/login?flag=qq
+cos:
+  enable: true
+  secret_id: ""
+  secret_key: ""
+  bucket: blog-server
+  cdn: https://blog-server-1317712916.cos.ap-beijing.myqcloud.com
+  prefix: blog-server
+  size: 32
+email:
+  host: smtp.qq.com
+  port: 465
+  user: ""
+  password: ""
+  default-from-email: ""
+  use_ssl: false
+  user_tls: false
