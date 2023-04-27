@@ -67,7 +67,7 @@ func getEncoder(conf internal_config.LogConfig) zapcore.Encoder {
 
 // getLogWriter 获取日志输出方式  日志文件 控制台
 func getLogWriter(conf internal_config.LogConfig) (zapcore.WriteSyncer, error) {
-
+	conf.LogPath = fmt.Sprintf("%v/%v", conf.LogPath, time.Now().Format("2006-01-02"))
 	// 判断日志路径是否存在，如果不存在就创建
 	if exist := IsExist(conf.LogPath); !exist {
 		if conf.LogPath == "" {
@@ -76,7 +76,6 @@ func getLogWriter(conf internal_config.LogConfig) (zapcore.WriteSyncer, error) {
 		if conf.LogFileName == "" {
 			conf.LogFileName = DefaultLogName
 		}
-		conf.LogPath = fmt.Sprintf("%v/%v", conf.LogPath, time.Now().Format("2006-01-02"))
 		if err := os.MkdirAll(conf.LogPath, os.ModePerm); err != nil {
 			conf.LogPath = DefaultLogPath
 			if err := os.MkdirAll(conf.LogPath, os.ModePerm); err != nil {
