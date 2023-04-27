@@ -8,6 +8,21 @@ import (
 	"go.uber.org/zap"
 	"os"
 	"path"
+	"strings"
+)
+
+var (
+	// 图片上传白名单
+	WhiteImageList = []string{
+		".jpg",
+		".png",
+		".jpeg",
+		".ico",
+		".tiff",
+		".gif",
+		".svg",
+		".webp",
+	}
 )
 
 type FileUploadResponse struct {
@@ -38,29 +53,40 @@ func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
 	// 判断上传结果
 	var resList []FileUploadResponse
 	for _, file := range fileList {
+		filename := file.Filename
+		// 是否存在白名单中
+		if !ImgWhitelistVerification(filename) {
+			zap.S().Warnf("%v 上传图片不合法,上传失败", filename)
+			resList = append(resList, FileUploadResponse{
+				Filename:  filename,
+				IsSuccess: false,
+				Msg:       fmt.Sprintf("%v 上传图片不合法,上传失败", filename),
+			})
+			continue
+		}
 		size := float64(file.Size) / float64(1024*1024)
 		if size > float64(global.GlobalC.Uploads.Size) {
 			zap.S().Warnf("%v 文件大小超出设定大小，设定大小为%dMB，未保存", file.Filename, global.GlobalC.Uploads.Size)
 			resList = append(resList, FileUploadResponse{
-				Filename:  file.Filename,
+				Filename:  filename,
 				IsSuccess: false,
-				Msg:       fmt.Sprintf("%v 文件大小超出设定大小，当前文件大小为: %.2fMB，设定大小为%dMB，未保存", file.Filename, size, global.GlobalC.Uploads.Size),
+				Msg:       fmt.Sprintf("%v 文件大小超出设定大小，当前文件大小为: %.2fMB，设定大小为%dMB，未保存", filename, size, global.GlobalC.Uploads.Size),
 			})
 			continue
 		}
-		savePath := path.Join(global.GlobalC.Uploads.Path, file.Filename)
+		savePath := path.Join(global.GlobalC.Uploads.Path, filename)
 		err := c.SaveUploadedFile(file, savePath)
 		if err != nil {
-			zap.S().Error("filename: %v filesize: %d 保存失败", file.Filename, file.Size)
+			zap.S().Error("filename: %v filesize: %d 保存失败", filename, file.Size)
 			resList = append(resList, FileUploadResponse{
 				Filename:  file.Filename,
 				IsSuccess: false,
-				Msg:       fmt.Sprintf("%v 文件保存失败", file.Filename),
+				Msg:       fmt.Sprintf("%v 文件保存失败", filename),
 			})
 			continue
 		}
 		resList = append(resList, FileUploadResponse{
-			Filename:  file.Filename,
+			Filename:  filename,
 			IsSuccess: true,
 			Msg:       "上传成功",
 		})
@@ -69,6 +95,7 @@ func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
 	return
 }
 
+// IsExists 文件夹是否存在
 func IsExists(dir string) error {
 	_, err := os.ReadDir(dir)
 	if err != nil {
@@ -79,4 +106,15 @@ func IsExists(dir string) error {
 		}
 	}
 	return nil
+}
+
+// ImgWhitelistVerification 上传图片白名单验证
+func ImgWhitelistVerification(filename string) bool {
+	ext := path.Ext(filename)
+	for _, whiteExt := range WhiteImageList {
+		if strings.ToLower(ext) == whiteExt {
+			return true
+		}
+	}
+	return false
 }
