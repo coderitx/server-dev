@@ -1,7 +1,7 @@
 package models
 
 import (
-	"blog-server/models/ctype"
+	"blog-server/apps/models/ctype"
 )
 
 // MenuModel 菜单表 菜单的路径可以是 /path 也可以是路由别名

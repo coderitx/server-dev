@@ -1,6 +1,8 @@
 package routers
 
-import "blog-server/api"
+import (
+	"blog-server/apps/api"
+)
 
 func (r *RouterGroup) SettingsRouter() {
 	settingsApi := api.ApiGroupApp.SettingApi

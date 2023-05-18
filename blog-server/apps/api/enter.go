@@ -1,8 +1,8 @@
 package api
 
 import (
-	"blog-server/api/images_api"
-	"blog-server/api/setting_api"
+	"blog-server/apps/api/images_api"
+	"blog-server/apps/api/setting_api"
 )
 
 // ApiGroup

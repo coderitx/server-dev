@@ -1,12 +1,12 @@
 package main
 
 import (
+	"blog-server/apps/routers"
 	"blog-server/cmd"
 	"blog-server/common/logx"
 	"blog-server/config"
 	"blog-server/global"
 	"blog-server/internal"
-	"blog-server/routers"
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
 )

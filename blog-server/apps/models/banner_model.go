@@ -1,7 +1,7 @@
 package models
 
 import (
-	"blog-server/models/ctype"
+	"blog-server/apps/models/ctype"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 	"os"

@@ -2,6 +2,7 @@ package responsex
 
 import (
 	"blog-server/common/errorx"
+	"blog-server/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -33,6 +34,13 @@ func OkWithData(data any, c *gin.Context) {
 	Result(Success, data, "成功", c)
 }
 
+func OkWithList(list any, count int64, c *gin.Context) {
+	OkWithData(map[string]interface{}{
+		"count": count,
+		"list":  list,
+	}, c)
+}
+
 func OkWithMessage(msg string, c *gin.Context) {
 	Result(Success, map[string]any{}, msg, c)
 }
@@ -43,6 +51,11 @@ func OkWith(c *gin.Context) {
 
 func Fail(data any, msg string, c *gin.Context) {
 	Result(Err, data, msg, c)
+}
+
+func FailWithError(err error, obj any, c *gin.Context) {
+	msg := utils.GetValidMsg(err, obj)
+	FailWithMessage(msg, c)
 }
 
 func FailWithMessage(msg string, c *gin.Context) {

@@ -1,11 +1,14 @@
 package images_api
 
 import (
+	"blog-server/apps/models"
 	"blog-server/common/responsex"
 	"blog-server/global"
+	"blog-server/utils"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"io"
 	"os"
 	"path"
 	"strings"
@@ -32,7 +35,7 @@ type FileUploadResponse struct {
 }
 
 // ImagesUploadView 上传单个文件
-func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
+func (i *ImagesApi) ImageUploadView(c *gin.Context) {
 	// 上传多个文件
 	form, err := c.MultipartForm()
 	if err != nil {
@@ -53,7 +56,27 @@ func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
 	// 判断上传结果
 	var resList []FileUploadResponse
 	for _, file := range fileList {
+
+		fs, _ := file.Open()
+		byteData, err := io.ReadAll(fs)
+		if err != nil {
+			zap.S().Errorf("read file error: %v", err)
+			return
+		}
 		filename := file.Filename
+		// 文件hash存储数据库
+		imgHash := utils.MD5(byteData)
+		var imgObj models.BannerModel
+		err = global.DB.Take(&imgObj, "hash = ?", imgHash).Error
+		if err == nil {
+			resList = append(resList, FileUploadResponse{
+				Filename:  imgObj.Path,
+				IsSuccess: false,
+				Msg:       fmt.Sprintf("%v 图片已存在", imgObj.Path),
+			})
+			continue
+		}
+
 		// 是否存在白名单中
 		if !ImgWhitelistVerification(filename) {
 			zap.S().Warnf("%v 上传图片不合法,上传失败", filename)
@@ -75,7 +98,7 @@ func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
 			continue
 		}
 		savePath := path.Join(global.GlobalC.Uploads.Path, filename)
-		err := c.SaveUploadedFile(file, savePath)
+		err = c.SaveUploadedFile(file, savePath)
 		if err != nil {
 			zap.S().Error("filename: %v filesize: %d 保存失败", filename, file.Size)
 			resList = append(resList, FileUploadResponse{
@@ -89,6 +112,11 @@ func (i *ImagesApi) ImagesUploadView(c *gin.Context) {
 			Filename:  filename,
 			IsSuccess: true,
 			Msg:       "上传成功",
+		})
+		global.DB.Create(&models.BannerModel{
+			Path: savePath,
+			Hash: imgHash,
+			Name: filename,
 		})
 	}
 	responsex.OkWithData(resList, c)

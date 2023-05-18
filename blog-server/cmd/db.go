@@ -1,29 +1,29 @@
 package cmd
 
 import (
+	models2 "blog-server/apps/models"
 	"blog-server/global"
-	"blog-server/models"
 	"go.uber.org/zap"
 )
 
 // Makemigrations 迁移表
 func Makemigrations() {
 	var err error
-	global.DB.SetupJoinTable(&models.UserModel{}, "CollectsModels", &models.UserCollectModel{})
-	global.DB.SetupJoinTable(&models.MenuModel{}, "Banners", &models.MenuBannerModel{})
+	global.DB.SetupJoinTable(&models2.UserModel{}, "CollectsModels", &models2.UserCollectModel{})
+	global.DB.SetupJoinTable(&models2.MenuModel{}, "Banners", &models2.MenuBannerModel{})
 	err = global.DB.Set("gorm:table_options", "ENGINE=InnoDB").
 		AutoMigrate(
-			&models.BannerModel{},
-			&models.TagModel{},
-			&models.MessageModel{},
-			&models.AdvertModel{},
-			&models.UserModel{},
-			&models.CommentModel{},
-			&models.ArticleModel{},
-			&models.MenuModel{},
-			&models.MenuBannerModel{},
-			&models.FadeBackModel{},
-			&models.LoginDataModel{},
+			&models2.BannerModel{},
+			&models2.TagModel{},
+			&models2.MessageModel{},
+			&models2.AdvertModel{},
+			&models2.UserModel{},
+			&models2.CommentModel{},
+			&models2.ArticleModel{},
+			&models2.MenuModel{},
+			&models2.MenuBannerModel{},
+			&models2.FadeBackModel{},
+			&models2.LoginDataModel{},
 		)
 	if err != nil {
 		zap.S().Error("[ error ] 生成数据库表结构失败！")

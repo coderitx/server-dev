@@ -7,7 +7,7 @@ import (
 	"blog-server/global"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
 	"io/fs"
 	"io/ioutil"
 )

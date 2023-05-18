@@ -1,6 +1,8 @@
 package models
 
-import "blog-server/models/ctype"
+import (
+	"blog-server/apps/models/ctype"
+)
 
 // ArticleModel 文章表
 type ArticleModel struct {
