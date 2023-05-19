@@ -62,7 +62,7 @@ func FailWithMessage(msg string, c *gin.Context) {
 	Result(Err, map[string]any{}, msg, c)
 }
 
-func FailWithCode(code errorx.ErrorCode, msg string, c *gin.Context) {
+func FailWithCode(code errorx.ErrorCode, c *gin.Context) {
 	msg, ok := errorx.ErrorMap[code]
 	if ok {
 		Result(int(code), map[string]any{}, msg, c)

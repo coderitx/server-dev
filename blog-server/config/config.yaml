@@ -53,7 +53,7 @@ qq:
   key: ""
   redirect: http://127.0.0.1/login?flag=qq
 cos:
-  enable: true
+  enable: false
   secret_id: ""
   secret_key: ""
   bucket: blog-server

@@ -12,7 +12,7 @@ func (s *SettingApi) SettingsInfoView(c *gin.Context) {
 	var su SettingUri
 	err := c.ShouldBindUri(&su)
 	if err != nil {
-		responsex.FailWithCode(errorx.ArgumentError, err.Error(), c)
+		responsex.FailWithCode(errorx.ArgumentError, c)
 		return
 	}
 	switch su.Name {

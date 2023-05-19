@@ -25,7 +25,7 @@ func (s *SettingApi) SettingsInfoUpdate(c *gin.Context) {
 		var info internal_config.SiteInfo
 		err = c.ShouldBindJSON(&info)
 		if err != nil {
-			responsex.FailWithCode(errorx.ArgumentError, "", c)
+			responsex.FailWithCode(errorx.ArgumentError, c)
 			return
 		}
 		global.GlobalC.SiteInfo = info
@@ -33,7 +33,7 @@ func (s *SettingApi) SettingsInfoUpdate(c *gin.Context) {
 		var info internal_config.Email
 		err = c.ShouldBindJSON(&info)
 		if err != nil {
-			responsex.FailWithCode(errorx.ArgumentError, "", c)
+			responsex.FailWithCode(errorx.ArgumentError, c)
 			return
 		}
 		global.GlobalC.Email = info
@@ -41,7 +41,7 @@ func (s *SettingApi) SettingsInfoUpdate(c *gin.Context) {
 		var info internal_config.QQ
 		err = c.ShouldBindJSON(&info)
 		if err != nil {
-			responsex.FailWithCode(errorx.ArgumentError, "", c)
+			responsex.FailWithCode(errorx.ArgumentError, c)
 			return
 		}
 		global.GlobalC.QQ = info
@@ -49,7 +49,7 @@ func (s *SettingApi) SettingsInfoUpdate(c *gin.Context) {
 		var info internal_config.COS
 		err = c.ShouldBindJSON(&info)
 		if err != nil {
-			responsex.FailWithCode(errorx.ArgumentError, "", c)
+			responsex.FailWithCode(errorx.ArgumentError, c)
 			return
 		}
 		global.GlobalC.Tencent = info

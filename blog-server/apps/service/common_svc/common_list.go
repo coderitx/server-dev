@@ -1,4 +1,4 @@
-package svc_common
+package common_svc
 
 import (
 	"blog-server/apps/models"

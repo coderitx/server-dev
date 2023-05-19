@@ -2,7 +2,7 @@ package images_api
 
 import (
 	"blog-server/apps/models"
-	"blog-server/apps/service/svc_common"
+	"blog-server/apps/service/common_svc"
 	"blog-server/common/errorx"
 	"blog-server/common/responsex"
 	"github.com/gin-gonic/gin"
@@ -24,12 +24,12 @@ func (i *ImagesApi) ImageListView(c *gin.Context) {
 	if p.Limit == 0 {
 		p.Limit = 10
 	}
-	list, count, err := svc_common.ComList(models.BannerModel{}, svc_common.Options{
+	list, count, err := common_svc.ComList(models.BannerModel{}, common_svc.Options{
 		PageInfo: p,
 	})
 	if err != nil {
 		zap.S().Error("query image list error: %v", err.Error())
-		responsex.FailWithCode(errorx.SettingsError, err.Error(), c)
+		responsex.FailWithCode(errorx.SettingsError, c)
 		return
 	}
 	responsex.OkWithList(list, count, c)

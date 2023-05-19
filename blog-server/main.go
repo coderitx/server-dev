@@ -13,7 +13,7 @@ import (
 
 func init() {
 	//fp := flag.String("f", "./config/config.yaml", "config file path")
-	godotenv.Load("./local.env")
+	godotenv.Load("./private.env")
 	c, err := config.LoadConfig(global.ConfigPath)
 	if err != nil {
 		panic(err)
