@@ -10,6 +10,13 @@ import (
 )
 
 // ImageListView 查询图片列表
+// @Tags 图片管理
+// @Summary 图片列表
+// @Description 图片列表
+// @Param data query models.PageInfo    false  "查询参数"
+// @Router /api/imageList [get]
+// @Produce json
+// @Success 200 {object} responsex.Response{data=responsex.ListResponse[models.BannerModel]}
 func (i *ImagesApi) ImageListView(c *gin.Context) {
 	var p models.PageInfo
 	err := c.ShouldBindQuery(&p)
