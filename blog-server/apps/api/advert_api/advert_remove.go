@@ -13,7 +13,7 @@ import (
 // @Summary 批量删除广告
 // @Description 批量删除广告
 // @Param data body models.RemoveRequest true  "广告id列表"
-// @Router /api/advertDelete [delete]
+// @Router /api/advert [delete]
 // @Produce json
 // @Success 200 {object} responsex.Response{data=string}
 func (*AdvertApi) AdvertDeleteView(c *gin.Context) {

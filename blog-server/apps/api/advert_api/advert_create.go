@@ -22,7 +22,7 @@ type AdvertRequest struct {
 // @Produce json
 // @Param data body AdvertRequest true "表示多个参数"
 // @Success 200 {object} responsex.Response{data=string}
-// @Router /api/advertCreate [post]
+// @Router /api/advert [post]
 func (*AdvertApi) AdvertCreateView(c *gin.Context) {
 	var req AdvertRequest
 	err := c.ShouldBindJSON(&req)

@@ -15,7 +15,7 @@ import (
 // @Summary 更新广告
 // @Description 更新广告
 // @Param data body AdvertRequest    true  "广告的一些参数"
-// @Router /api/advertUpdate/:id [put]
+// @Router /api/advert/:id [put]
 // @Produce json
 // @Success 200 {object} responsex.Response{data=string}
 func (*AdvertApi) AdvertUpdateView(c *gin.Context) {

@@ -16,7 +16,7 @@ import (
 // @Produce json
 // @Param data query models.PageInfo false "查询参数"
 // @Success 200 {object} responsex.Response{data=responsex.ListResponse[models.AdvertModel]}
-// @Router /api/advertList [get]
+// @Router /api/adver [get]
 func (*AdvertApi) AdvertListView(c *gin.Context) {
 	var pageInfo models.PageInfo
 	err := c.ShouldBindUri(&pageInfo)
