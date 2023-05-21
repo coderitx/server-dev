@@ -21,9 +21,7 @@ type AdvertRequest struct {
 // @Description 创建广告
 // @Produce json
 // @Param data body AdvertRequest true "表示多个参数"
-// @Success 200 {object} responsex.Response{}
-// @Failure 400 {object} responsex.Response{}
-// @Failure 500 {object} responsex.Response{}
+// @Success 200 {object} responsex.Response{data=string}
 // @Router /api/advertCreate [post]
 func (*AdvertApi) AdvertCreateView(c *gin.Context) {
 	var req AdvertRequest
