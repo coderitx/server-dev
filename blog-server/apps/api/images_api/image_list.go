@@ -18,14 +18,8 @@ func (i *ImagesApi) ImageListView(c *gin.Context) {
 		responsex.FailWithMessage(err.Error(), c)
 		return
 	}
-	if p.Page == 0 {
-		p.Page = 1
-	}
-	if p.Limit == 0 {
-		p.Limit = 10
-	}
 	list, count, err := common_svc.ComList(models.BannerModel{}, common_svc.Options{
-		PageInfo: p,
+		PageInfo: common_svc.PageInfoValid(p),
 	})
 	if err != nil {
 		zap.S().Error("query image list error: %v", err.Error())
