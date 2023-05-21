@@ -21,7 +21,7 @@ type ImageNameListResponse struct {
 // @Description 图片名称信息列表
 // @Router /api/imageNameList [get]
 // @Produce json
-// @Success 200 {object} []ImageNameListResponse{}
+// @Success 200 {object} responsex.Response{data=[]ImageNameListResponse}
 func (*ImagesApi) ImageNameListView(c *gin.Context) {
 	var images []ImageNameListResponse
 	err := global.DB.Model(&models.BannerModel{}).Select("id", "name", "path").Scan(&images).Error
