@@ -4,13 +4,16 @@ import (
 	"blog-server/global"
 	"context"
 	"fmt"
+	swaggerFiles "github.com/swaggo/files"
 	"go.uber.org/zap"
 	"net/http"
 	"os"
 	"os/signal"
 	"time"
 
+	_ "blog-server/docs"
 	"github.com/gin-gonic/gin"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type RouterGroup struct {
@@ -31,6 +34,7 @@ func InitApiRouter() {
 }
 
 func InitRouterGroup(router *gin.Engine) {
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	// 定义公共前缀
 	apiRouterGroup := router.Group("api")
 	routerGroupApp := RouterGroup{apiRouterGroup}
@@ -38,6 +42,8 @@ func InitRouterGroup(router *gin.Engine) {
 	routerGroupApp.SettingsRouter()
 	// 上传图片相关
 	routerGroupApp.ImagesRouter()
+	// 广告相关
+	routerGroupApp.AdvertRouter()
 }
 
 func runServer(router *gin.Engine) {

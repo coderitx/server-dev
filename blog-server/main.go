@@ -5,6 +5,7 @@ import (
 	"blog-server/cmd"
 	"blog-server/common/logx"
 	"blog-server/config"
+	_ "blog-server/docs"
 	"blog-server/global"
 	"blog-server/internal"
 	"github.com/joho/godotenv"
@@ -33,6 +34,11 @@ func init() {
 
 }
 
+// @title blog-server API 文档
+// @version 1.0
+// @description blog-server API 文档
+// @host 127.0.0.1:8080
+// @BasePath /
 func main() {
 	routers.InitApiRouter()
 }
