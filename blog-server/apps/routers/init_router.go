@@ -44,6 +44,8 @@ func InitRouterGroup(router *gin.Engine) {
 	routerGroupApp.ImagesRouter()
 	// 广告相关
 	routerGroupApp.AdvertRouter()
+	// 菜单相关
+	routerGroupApp.MenuRouter()
 }
 
 func runServer(router *gin.Engine) {

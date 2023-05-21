@@ -4,8 +4,8 @@ import "blog-server/apps/api"
 
 func (r *RouterGroup) AdvertRouter() {
 	advertApi := api.ApiGroupApp.AdvertApi
-	r.POST("/advertCreate", advertApi.AdvertCreateView)
-	r.GET("/advertList", advertApi.AdvertListView)
-	r.PUT("/advertUpdate/:id", advertApi.AdvertUpdateView)
-	r.DELETE("/advertDelete", advertApi.AdvertDeleteView)
+	r.POST("/advert", advertApi.AdvertCreateView)
+	r.GET("/advert", advertApi.AdvertListView)
+	r.PUT("/advert/:id", advertApi.AdvertUpdateView)
+	r.DELETE("/advert", advertApi.AdvertDeleteView)
 }
