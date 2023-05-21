@@ -17,7 +17,7 @@ type ImageUpdateRequest struct {
 // @Summary 更新图片
 // @Description 更新图片
 // @Param data body ImageUpdateRequest    true  "广告的一些参数"
-// @Router /api/imageUpdate/:id [put]
+// @Router /api/image/:id [put]
 // @Produce json
 // @Success 200 {object} responsex.Response{data=string}
 func (i *ImagesApi) ImageUpdateView(c *gin.Context) {

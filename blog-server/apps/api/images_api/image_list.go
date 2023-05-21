@@ -14,7 +14,7 @@ import (
 // @Summary 图片列表
 // @Description 图片列表
 // @Param data query models.PageInfo    false  "查询参数"
-// @Router /api/imageList [get]
+// @Router /api/image [get]
 // @Produce json
 // @Success 200 {object} responsex.Response{data=responsex.ListResponse[models.BannerModel]}
 func (i *ImagesApi) ImageListView(c *gin.Context) {

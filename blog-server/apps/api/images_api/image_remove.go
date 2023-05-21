@@ -13,7 +13,7 @@ import (
 // @Summary 批量删除图片
 // @Description 批量删除图片
 // @Param data body models.RemoveRequest true  "图片id列表"
-// @Router /api/imageDelete [delete]
+// @Router /api/image [delete]
 // @Produce json
 // @Success 200 {object} responsex.Response{data=string}
 func (i *ImagesApi) ImageDeleteList(c *gin.Context) {
