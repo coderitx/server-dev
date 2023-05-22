@@ -2,6 +2,7 @@ package cmd
 
 import (
 	sys_flag "flag"
+	"fmt"
 	"github.com/fatih/structs"
 )
 
@@ -47,11 +48,11 @@ func SwitchOption(option Option) {
 		return
 	}
 
-	//if option.User == "admin" || option.User == "user" {
-	//	CreateUser(option.User)
-	//	return
-	//}
-	//fmt.Printf("%#v\n", option.User)
-	//sys_flag.Usage()
-
+	if option.User == "admin" || option.User == "user" {
+		CreateUser(option.User)
+		return
+	}
+	fmt.Printf("%#v\n", option.User)
+	// 不符合继续执行
+	sys_flag.Usage()
 }
