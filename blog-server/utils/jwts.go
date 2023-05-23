@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"blog-server/apps/models/ctype"
 	"blog-server/global"
 	"errors"
 	"github.com/dgrijalva/jwt-go/v4"
@@ -9,9 +8,9 @@ import (
 )
 
 type JWTPayload struct {
-	NickName string     `json:"nick_name"`
-	Role     ctype.Role `json:"role"`
-	UserID   uint       `json:"user_id"`
+	NickName string `json:"nick_name"`
+	Role     int    `json:"role"`
+	UserID   uint   `json:"user_id"`
 }
 
 type CustomClaims struct {
