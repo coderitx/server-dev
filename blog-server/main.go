@@ -20,8 +20,16 @@ func init() {
 		panic(err)
 	}
 	global.GlobalC = c
-	internal.InitDB(global.GlobalC.Mysql)
-	internal.InitRedis(global.GlobalC.Redis)
+	err = internal.InitDB(global.GlobalC.Mysql)
+	if err != nil {
+		zap.S().Errorf("mysql 初始化失败 [ERROR]: %v", err.Error())
+		panic(err)
+	}
+	err = internal.InitRedis(global.GlobalC.Redis)
+	if err != nil {
+		zap.S().Errorf("redis 初始化失败 [ERROR]: %v", err.Error())
+		panic(err)
+	}
 	logx.InitLogger(global.GlobalC.Log)
 	zap.S().Infoln("--------所有配置初始化完成---------")
 	// 迁移数据表

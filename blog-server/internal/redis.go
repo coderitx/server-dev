@@ -10,9 +10,9 @@ import (
 	"time"
 )
 
-func InitRedis(c internal_config.RedisConfig) {
+func InitRedis(c internal_config.RedisConfig) error {
 	rdb := redis.NewClient(&redis.Options{
-		Addr:        c.Host,
+		Addr:        fmt.Sprintf("%v:%d", c.Host, c.Port),
 		Password:    c.Password,
 		DialTimeout: time.Duration(c.DialTimeout) * time.Second,
 		ReadTimeout: time.Duration(c.ReadTimeout) * time.Second,
@@ -23,9 +23,9 @@ func InitRedis(c internal_config.RedisConfig) {
 
 	if err := rdb.Ping(context.TODO()).Err(); err != nil {
 		zap.S().Errorf("redis connection error: %v", err)
-		return
+		return err
 	}
 	fmt.Println("=====redis========")
 	global.RDB = rdb
-	return
+	return nil
 }

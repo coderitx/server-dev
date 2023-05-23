@@ -24,8 +24,8 @@ log:
   stdout: true
 redis:
   host: 127.0.0.1
-  port: 0
-  password: root
+  port: 6379
+  password:
   read_timeout: 100
   dial_timeout: 100
   pool_size: 50

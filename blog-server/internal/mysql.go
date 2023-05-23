@@ -14,7 +14,7 @@ import (
 )
 
 // InitDB 初始化database
-func InitDB(c internal_config.MysqlConfig) {
+func InitDB(c internal_config.MysqlConfig) error {
 	var mysqlLogLeve logger.LogLevel
 	if c.LogLevel == "info" {
 		mysqlLogLeve = logger.Info
@@ -35,9 +35,9 @@ func InitDB(c internal_config.MysqlConfig) {
 	db, err := gorm.Open(mysql.New(dbCfg), &gorm.Config{Logger: logx})
 	if err != nil {
 		zap.S().Errorf("connect mysql error: %v", err)
-		return
+		return err
 	}
 	db.Model(true)
 	global.DB = db
-	return
+	return nil
 }
