@@ -4,7 +4,7 @@ mysql:
   user: root
   password: root
   db: blog
-  log_level: release
+  log_level: info
 system:
   host: 0.0.0.0
   port: 8080
@@ -68,3 +68,7 @@ email:
   default-from-email: ""
   use_ssl: false
   user_tls: false
+jwt:
+  secret: "hello-blog-server"
+  expires: 1   # token过期时间，小时
+  issuer: "1234"

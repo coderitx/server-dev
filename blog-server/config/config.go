@@ -18,6 +18,7 @@ type Config struct {
 	QQ       internal_config.QQ           `yaml:"qq"`
 	Tencent  internal_config.COS          `yaml:"cos"`
 	Email    internal_config.Email        `yaml:"email"`
+	JWT      internal_config.JWT          `yaml:"jwt"`
 }
 
 func LoadConfig(path string) (*Config, error) {
