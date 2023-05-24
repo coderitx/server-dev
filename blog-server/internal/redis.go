@@ -26,7 +26,6 @@ func InitRedis(c internal_config.RedisConfig) error {
 		zap.S().Errorf("redis connection error: %v", err)
 		return err
 	}
-	fmt.Println("=====redis========")
 	global.RDB = rdb
 	return nil
 }
