@@ -5,6 +5,7 @@ import (
 	"blog-server/apps/api/images_api"
 	"blog-server/apps/api/menu_api"
 	"blog-server/apps/api/setting_api"
+	"blog-server/apps/api/tag_api"
 	"blog-server/apps/api/user_api"
 )
 
@@ -15,6 +16,7 @@ type ApiGroup struct {
 	advert_api.AdvertApi
 	menu_api.MenuApi
 	user_api.UserApi
+	tag_api.TagApi
 }
 
 var ApiGroupApp = new(ApiGroup)

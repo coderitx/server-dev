@@ -48,6 +48,8 @@ func InitRouterGroup(router *gin.Engine) {
 	routerGroupApp.MenuRouter()
 	// 用户相关
 	routerGroupApp.UserRouter()
+	// 标签相关
+	routerGroupApp.TagRouter()
 }
 
 func runServer(router *gin.Engine) {
