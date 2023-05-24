@@ -1,0 +1,1121 @@
+{
+	"info": {
+		"_postman_id": "84ec8423-1b28-4750-9cae-732398696c75",
+		"name": "blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "系统设置",
+			"item": [
+				{
+					"name": "查看系统信息",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/settings/tencent",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"settings",
+								"tencent"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "修改系统配置",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"enable\": true,\n    \"access_key\": \"JqOGVVUHuW5jbBtsu-x9nU6PKIcSzK3FUYXTpY0P\",\n    \"secret_key\": \"-rp-t5Kp4Pdublzp-Q8IqWqLcMJnZjwTHFSUdJZ3\",\n    \"bucket\": \"fixpng\",\n    \"cdn\": \"https://rrio8v49c.hn-bkt.clouddn.com/\",\n    \"zone\": \"z2\",\n    \"prefix\": \"glog-server\",\n    \"size\": 32\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/settings/tencent",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"settings",
+								"tencent"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "图片管理",
+			"item": [
+				{
+					"name": "图片上传",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "images",
+									"type": "file",
+									"src": "/home/server-dev/blog-server/testdata/连衣裙小接机.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/image?limit=2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片删除",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_list\":[9,10]\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/image",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片修改名称",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 11,\n    \"name\": \"白衣小姐姐.jpg\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/image",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "图片名称列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/image_name",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"image_name"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "广告管理",
+			"item": [
+				{
+					"name": "添加广告",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Rust 学习笔记2\",\n    \"href\": \"https://www.rust-lang.org/zh-CN/learn/get-started\",\n    \"image\": \"https://www.rust-lang.org/zh-CN/learn/get-started\",\n    \"is_show\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/advert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"advert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "广告列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "admin",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/advert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"advert"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "广告更新",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"rust 官网学习文档1\",\n    \"href\": \"https://www.rust-lang.org/zh-CN/learn/get-started\",\n    \"image\": \"https://www.rust-lang.org/zh-CN/learn/get-started\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/adver/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"adver",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "广告删除",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_list\": [3]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/advert",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"advert"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "菜单管理",
+			"item": [
+				{
+					"name": "添加菜单",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"abstract\": [\n    \"golang学习笔记\",\"gin 框架博客\"\n  ],\n  \"abstract_time\": 7,\n  \"banner_time\": 7,\n  \"image_sort_list\": [\n    {\n      \"image_id\": 18,\n      \"sort\": 1\n    },\n    {\n       \"image_id\": 19,\n       \"sort\":0\n    }\n  ],\n  \"title\": \"首页blog1\",\n  \"path\": \"/index\",\n  \"slogan\": \"学习博客blog\",\n  \"sort\": 0\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单名称列表",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus_name",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus_name"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单更新",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"abstract\": [\n    \"golang学习笔记\",\"gin 框架博客\"\n  ],\n  \"abstract_time\": 7,\n  \"banner_time\": 7,\n  \"image_sort_list\": [\n    {\n      \"image_id\": 19,\n      \"sort\": 5\n    }\n  ],\n  \"title\": \"首页blog\",\n  \"path\": \"/home\",\n  \"slogan\": \"学习博客blog\",\n  \"sort\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单删除",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_list\":[6]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "菜单详情",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_list\":[6]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/menus/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"menus",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "用户管理",
+			"item": [
+				{
+					"name": "邮箱登陆",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_name\":\"admin\",\n    \"password\":\"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/email_login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"email_login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDkzODg2NS40ODYwOTl9.ea-7ZHNs9lqclDBWrgiZoFI5R1cfy_ohqCLDbklbkQA",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户权限更新",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJhZG1pbi1uaWNrIiwicm9sZSI6MSwidXNlcl9pZCI6MiwiZXhwIjoxNjg0ODUzMDg5LjU4MTI3OX0.FkgiGZPZxFzsWHnwm6xCPZkGLfEgfHv728BrBazXy-A",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\":2,\n    \"role\":2,\n    \"nick_name\": \"普通用户\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/user_role",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user_role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户密码更新",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJhZG1pbi1uaWNrIiwicm9sZSI6MSwidXNlcl9pZCI6MiwiZXhwIjoxNjg0ODUzMDg5LjU4MTI3OX0.FkgiGZPZxFzsWHnwm6xCPZkGLfEgfHv728BrBazXy-A",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"old_pass\":\"admin1\",\n    \"new_pass\":\"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/user_pass",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user_pass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户注销",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDkzODg2NS40ODYwOTl9.ea-7ZHNs9lqclDBWrgiZoFI5R1cfy_ohqCLDbklbkQA",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"old_pass\":\"admin1\",\n    \"new_pass\":\"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户绑定邮箱",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiLmma7pgJrnlKjmiLciLCJyb2xlIjoxLCJ1c2VyX2lkIjoyLCJleHAiOjE2ODQ5MzQ4OTcuMTczNDA3fQ.MOd6psrVOQW8a_4abDRgzTThSg0QsnoLKrRjvBd2cts",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"354767929@qq.com\",\n    \"code\": \"667302\",\n    \"password\": \"admin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/user_bind_email",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user_bind_email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "用户创建",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nick_name\": \"super\",\n    \"user_name\":\"super\",\n    \"password\":\"super123\",\n    \"role\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/user_create",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user_create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "标签管理",
+			"item": [
+				{
+					"name": "添加标签",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"php 学习笔记\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/tags",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tags"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "标签列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "admin",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/tags",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tags"
+							],
+							"query": [
+								{
+									"key": "toekn",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "标签更新",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Python 爬虫入门\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/tags/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tags",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "广告删除",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id_list\": [2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/tags",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"tags"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "消息管理",
+			"item": [
+				{
+					"name": "发布消息",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"send_user_id\": 2,\n    \"rev_user_id\":3,\n    \"content\": \"hello world\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/message",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"message"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "全部消息列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Referer",
+								"value": "admin",
+								"type": "default",
+								"disabled": true
+							},
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiLmma7pgJrnlKjmiLciLCJyb2xlIjoxLCJ1c2VyX2lkIjoyLCJleHAiOjE2ODQ5NDE4MjAuNjI1MzQ5fQ.sK6HGOFr8nVy8FqIyiWYa5E1O25XqFbV3RfodkrfZUs",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/message_all",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"message_all"
+							],
+							"query": [
+								{
+									"key": "toekn",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "消息列表",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/messages",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "聊天记录",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuaWNrX25hbWUiOiJzdXBlciIsInJvbGUiOjEsInVzZXJfaWQiOjMsImV4cCI6MTY4NDk0MDEwOC4wMDAzODV9.odcLieicJD7P_1EjNc18KCGfv20HxsWmYFhifj2WZ5U",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/api/messages_record",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"messages_record"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
