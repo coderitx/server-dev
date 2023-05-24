@@ -50,6 +50,8 @@ func InitRouterGroup(router *gin.Engine) {
 	routerGroupApp.UserRouter()
 	// 标签相关
 	routerGroupApp.TagRouter()
+	// 消息相关
+	routerGroupApp.MessageRouter()
 }
 
 func runServer(router *gin.Engine) {
