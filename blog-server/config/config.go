@@ -37,7 +37,6 @@ func LoadConfig(path string) (*Config, error) {
 
 	C.Email.User = os.Getenv("User")
 	C.Email.Password = os.Getenv("EmailPwd")
-	C.Email.DefaultFromEmail = os.Getenv("DefaultFromEmail")
-	fmt.Printf("%+v", C)
+	//fmt.Printf("%+v", C)
 	return C, nil
 }

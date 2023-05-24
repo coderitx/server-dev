@@ -62,11 +62,11 @@ cos:
   prefix: blog-server
   size: 32
 email:
-  host: smtp.qq.com
+  host: smtp.163.com
   port: 465
   user: ""
   password: ""
-  default-from-email: ""
+  default-from-email: "博客验证邮件"
   use_ssl: false
   user_tls: false
 jwt:
