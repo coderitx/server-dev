@@ -25,6 +25,7 @@ log:
 redis:
   host: 127.0.0.1
   port: 6379
+  db: 0
   password:
   read_timeout: 100
   dial_timeout: 100

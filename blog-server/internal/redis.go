@@ -19,6 +19,7 @@ func InitRedis(c internal_config.RedisConfig) error {
 		PoolSize:    c.PoolSize,
 		PoolTimeout: time.Duration(c.PoolTimeout) * time.Second,
 		MaxConnAge:  time.Duration(c.MaxConnAge) * time.Second,
+		DB:          c.DB,
 	})
 
 	if err := rdb.Ping(context.TODO()).Err(); err != nil {

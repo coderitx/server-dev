@@ -9,6 +9,7 @@ import (
 	"blog-server/utils"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
+	"sort"
 )
 
 // UserListView 用户菜单列表
@@ -19,18 +20,19 @@ import (
 // @Produce json
 // @Success 200 {object} responsex.Response{data=responsex.ListResponse[models.UserModel]}
 func (*UserApi) UserListView(c *gin.Context) {
-	token := c.GetHeader("token")
-	if token == "" {
+
+	claimsVal, ok := c.Get("claims")
+	if !ok {
+		zap.S().Errorf("未登录")
 		responsex.FailWithMessage("未登录", c)
 		return
 	}
-	claims, err := utils.ParseToken(token)
-	if err != nil {
-		zap.S().Errorf("解析token失败 [ERROR]: %v", err.Error())
+	claims, ok := claimsVal.(*utils.CustomClaims)
+	if !ok {
+		zap.S().Errorf("解析token失败")
 		responsex.FailWithMessage("token 错误", c)
 		return
 	}
-
 	var page models.PageInfo
 	if err := c.ShouldBindQuery(&page); err != nil {
 		responsex.FailWithCode(errorx.ArgumentError, c)
@@ -47,7 +49,9 @@ func (*UserApi) UserListView(c *gin.Context) {
 			user.Email = utils.DesensitizationEmail(user.Email)
 		}
 		users = append(users, *user)
-
 	}
+	sort.Slice(users, func(i, j int) bool {
+		return users[i].ID < users[j].ID
+	})
 	responsex.OkWithList(users, count, c)
 }
